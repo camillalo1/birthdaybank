@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>birthdaybank</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+
+        //model
+
+        let html = app.innerHTML; 
+        let name = document.getElementById('inputName');
+        let birthdate = document.getElementById('inputDate');
+        let nameBank =[
+            {name:"",
+             birthdate:""}
+            ];
+        let displayNavn="";
+        let updateBank="";
+        let inputValue="";
+        let listName="";
+        let findName="";
+
+        //view
+
+        updateView();
+
+        function updateView(){
+            document.getElementById("app").innerHTML = /*HTML*/ `
+            
+            <h1> Navneliste </h1>
+
+            <p> Legg inn navn og bursdag for å lagre i bursdagsbanken!</p>
+
+            <input  type="text" 
+                    placeholder="Skriv inn navn her..."
+                    onchange="updateValue(this.value)"
+                    name="updateBank"
+                    id="inputName" /><br/>
+
+            <input  type="text" 
+                    placeholder="Skriv inn fødselsdato her..."
+                    onchange="updateValue(this.value)"
+                    name="updateBank"
+                    id="inputDate" /><br/>
+    
+            <br><button onclick="saveName(this.value)"> Lagre navn! </button>
+            <br><button onclick="searchName(this.value)"> Søk opp navn! </button>
+            
+            `;
+        }
+
+        //controller
+
+        function updateValue(inputValue){
+            listName = inputValue
+        }
+
+        function saveName(){
+            inputValue = document.getElementsByName('updateBank').value;
+            nameBank.push(listName);
+            updateView();
+        }
+
+        function searchName(inputValue){
+            for (let i = 0; i < nameBank.length; i++) {
+                html += nameBank[i];
+                if (nameBank[i] == listName){
+                    /*HTML*/`
+                    <div>${name, birthdate}</div>
+                    `
+                } else {
+                    /*HTML*/`
+                    <div> Person and birthdate could not be found </div>
+                    `
+                }
+                ;
+            }
+            updateView();
+         }
+    
+        
+        
+
+
+
+
+
+    
+    </script>
+</body>
+</html>
