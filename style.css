@@ -4,3 +4,12 @@ html {
     background-repeat: no-repeat;
     color: purple;
 }
+
+body {
+    border: 2px solid gray;
+    background-color: blanchedalmond;
+    width: 40%;
+    height: fit-content;
+    margin: 5%;
+    padding: 5%;
+}
