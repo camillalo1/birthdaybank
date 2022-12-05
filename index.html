@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
     <title>birthdaybank</title>
 </head>
 <body>
@@ -14,17 +15,8 @@
         //model
 
         let html = app.innerHTML; 
-        let name = document.getElementById('inputName');
-        let birthdate = document.getElementById('inputDate');
-        let nameBank =[
-            {name:"",
-             birthdate:""}
-            ];
-        let displayNavn="";
-        let updateBank="";
-        let inputValue="";
-        let listName="";
-        let findName="";
+        const personalInfo = {};
+        const personalInfoInput = [{}];
 
         //view
 
@@ -33,21 +25,17 @@
         function updateView(){
             document.getElementById("app").innerHTML = /*HTML*/ `
             
-            <h1> Navneliste </h1>
+            <h1> BursdagsBank! </h1>
 
             <p> Legg inn navn og bursdag for å lagre i bursdagsbanken!</p>
 
             <input  type="text" 
                     placeholder="Skriv inn navn her..."
-                    onchange="updateValue(this.value)"
-                    name="updateBank"
-                    id="inputName" /><br/>
+                    onchange="nameInput(this.value)"/><br/>
 
             <input  type="text" 
                     placeholder="Skriv inn fødselsdato her..."
-                    onchange="updateValue(this.value)"
-                    name="updateBank"
-                    id="inputDate" /><br/>
+                    onchange="birthdateInput(this.value)"/><br/>
     
             <br><button onclick="saveName(this.value)"> Lagre navn! </button>
             <br><button onclick="searchName(this.value)"> Søk opp navn! </button>
@@ -57,14 +45,19 @@
 
         //controller
 
-        function updateValue(inputValue){
-            listName = inputValue
+        function nameInput(name){
+            personalInfo.name = name
+            console.log(personalInfo);
+        }
+
+        function birthdateInput(birthDate){
+            personalInfo.birthday = birthDate
+            console.log(personalInfo);
         }
 
         function saveName(){
-            inputValue = document.getElementsByName('updateBank').value;
-            nameBank.push(listName);
-            updateView();
+           personalInfoInput.push(personalInfo)
+           console.log(personalInfoInput);
         }
 
         function searchName(inputValue){
